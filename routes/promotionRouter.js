@@ -7,26 +7,12 @@ promotionRouter.use(express.json());
 
 promotionRouter
   .route("/")
-  .get((req, res) => {
-    res.end("Get promotions");
-  })
-  // .post((req, res) => {
-  //   res.end(`Add new promotion: {name: ${req.body.name}, age: ${req.body.age}}`);
-  // })
+  .get(promotionController.findAll)
   .post(promotionController.create)
-  .delete((req, res) => {
-    res.end(`Delete all promotions`);
-  });
+  .delete(promotionController.deleteAll)
 
 promotionRouter.route("/:promoId")
-  .get((req, res) => {
-    res.end(`Get promotion ${req.params.promoId}`);
-  })
-  .put((req, res) => {
-    res.end(`Update promotion {name: ${req.body.name}, age: ${req.body.age}}`);
-  })
-  .delete((req, res) => {
-    res.end(`Delete promotion ${req.params.promoId}`);
-  });
-
+  .get(promotionController.getById)
+  .put(promotionController.upadateById)
+  .delete(promotionController.deleteById)
 module.exports = promotionRouter;
