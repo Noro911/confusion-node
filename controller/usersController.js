@@ -25,5 +25,16 @@ exports.create = (req, res) => {
 
 // login
 exports.login = async (req, res) => {
-  return res.status(200).json("Login successful!")
+  const token = authenticate.getToken({_id: req.user._id})
+  return res.status(200).json({success: true, token: token, status: 'You are successfully logged in!'})
+}
+
+//getAllUsers
+exports.getAllUsers = async (req, res) => {
+  try {
+    const result  = await User.findOne({})
+    return res.status(200).json(result)
+  } catch (error) {
+    return res.status(500).json('Getting all fail!')
+  }
 }
