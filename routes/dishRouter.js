@@ -18,4 +18,14 @@ dishRouter
   .put(authenticate.verifyUser, authenticate.verifyAdmin, dishesController.updateById)
   .delete(authenticate.verifyUser, authenticate.verifyAdmin, dishesController.deleteById)
 
+dishRouter
+  .route('/:dishId/comments')
+  .get(dishesController.getComments)
+
+dishRouter
+  .route('/:dishId/comments/:commentId')
+  .get(dishesController.getCommentById)
+  .put(authenticate.verifyUser, dishesController.updateCommentById)
+  .delete(authenticate.verifyUser, dishesController.deleteCommentById)
+
 module.exports = dishRouter;
