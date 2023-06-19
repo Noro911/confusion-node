@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const config = require('../config')
 
 async function connect() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/conFusion", {
+    await mongoose.connect(config.mongoUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
