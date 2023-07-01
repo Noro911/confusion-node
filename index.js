@@ -11,6 +11,7 @@ const dishRouter = require("./routes/dishRouter");
 const promotionRouter = require("./routes/promotionRouter");
 const leaderRouter = require("./routes/leaderRouter");
 const userRouter = require("./routes/userRouter")
+const favoriteRouter = require("./routes/favoriteRouter")
 const db = require("./node_mongoose/index");
 
 // Connect database
@@ -33,5 +34,6 @@ app.use("/dishes", dishRouter);
 app.use("/promotions", promotionRouter);
 app.use("/leaders", leaderRouter);
 app.use("/user", userRouter)
+app.use("/favorites", favoriteRouter)
 
 app.listen(port, () => console.log("listen"));
